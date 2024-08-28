@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore the World - Tourism Guide</title>
+    <style>
+        :root {
+            --primary-color: #1e88e5;
+            --secondary-color: #ffc107;
+            --accent-color: #ff6d00;
+            --background-color: #f5f5f5;
+            --text-color: #333333;
+            --light-text: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        nav {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        header {
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 3rem 2rem;
+            background-image: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+        }
+        main {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            color: var(--primary-color);
+        }
+        .destination {
+            background-color: var(--light-text);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .destination:hover {
+            transform: translateY(-5px);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .search-container input[type="text"] {
+            padding: 0.75rem;
+            width: 300px;
+            border: 2px solid var(--primary-color);
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+        .search-container button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .search-container button:hover {
+            background-color: var(--accent-color);
+        }
+        .selection-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .selection-container select {
+            padding: 0.75rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: var(--light-text);
+            color: var(--text-color);
+        }
+        .contact-form {
+            background-color: var(--light-text);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .contact-form button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .contact-form button:hover {
+            background-color: var(--accent-color);
+        }
+        .guide-section {
+            background-color: aliceblue;
+            color: var(--text-color);
+            padding: 3rem 0;
+            margin-top: 2rem;
+        }
+        .guide-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .guide-info {
+            flex: 2;
+            padding-right: 2rem;
+        }
+        .guide-image {
+            flex: 1;
+            text-align: center;
+        }
+        .guide-image img {
+            border-radius: 50%;
+            max-width: 200px;
+            border: 5px solid var(--primary-color);
+        }
+        .guide-cta {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+        .guide-cta:hover {
+            background-color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#tips">Travel Tips</a></li>
+            <li><a href="#guide-section">Tour Guide</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <header id="home">
+        <h1>Explore the World</h1>
+        <p>Your Ultimate Tourism Guide</p>
+    </header>
+    <main>
+        <div class="search-container">
+            <input type="text" placeholder="Search destinations...">
+            <button type="submit">Search</button>
+        </div>
+        <div class="selection-container">
+            <select name="continent">
+                <option value="">Select Continent</option>
+                <option value="africa">Africa</option>
+                <option value="asia">Asia</option>
+                <option value="europe">Europe</option>
+                <option value="north-america">North America</option>
+                <option value="south-america">South America</option>
+                <option value="oceania">Oceania</option>
+            </select>
+            <select name="travel-type">
+                <option value="">Select Travel Type</option>
+                <option value="adventure">Adventure</option>
+                <option value="cultural">Cultural</option>
+                <option value="relaxation">Relaxation</option>
+                <option value="eco-tourism">Eco-tourism</option>
+            </select>
+        </div>
+        <section id="destinations">
+            <h2>Popular Destinations</h2>
+            <div class="destination">
+                <h3>Paris, France</h3>
+                <img src="https://images.unsplash.com/photo-1471874708433-acd480424946?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aWZlbCUyMHRvd2VyfGVufDB8fDB8fHww" alt="Paris, France">
+                <p>Experience the romance and culture of the City of Light. Visit iconic landmarks like the Eiffel Tower and the Louvre Museum.</p>
+            </div>
+            <div class="destination">
+                <h3>Tokyo, Japan</h3>
+                <img src="https://images.unsplash.com/photo-1519671457220-94c67b754b32?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dG9reXxlbnwwfHwwfHx8MA%3D%3D" alt="Tokyo, Japan">
+                <p>Immerse yourself in the bustling energy of Tokyo. Explore its cutting-edge technology, historic temples, and unique neighborhoods.</p>
+            </div>
+            <div class="destination">
+                <h3>New York City, USA</h3>
+                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bmV3JTIweW9ya3xlbnwwfHwwfHx8MA%3D%3D" alt="New York City, USA">
+                <p>Explore the Big Apple's world-famous attractions, diverse neighborhoods, and vibrant culture.</p>
+            </div>
+            <div class="destination">
+                <h3>Arunachal, India</h3>
+                <img src="https://plus.unsplash.com/premium_photo-1697729690458-2d64ca777c04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YXJ1bmFjaGFsJTIwcHJhZGVzaHxlbnwwfHwwfHx8MA%3D%3D" alt="Arunachal, India">
+                <p>Arunachal Pradesh, meaning “Land of the Rising Sun,” long has been a recognized region of the Indian subcontinent, receiving mention in such ancient Hindu literature as the Kalika-purana and the epic poems Mahabharata and Ramayana.</p>
+            </div>
+            <section id="guide-section" class="guide-section">
+                <div class="guide-content">
+                    <div class="guide-info">
+                        <h2>Your Personal Tour Guide</h2>
+                        <p>Hello! I'm [Your Name], an experienced tour guide passionate about showing visitors the hidden gems and must-see attractions of our beautiful destinations.</p>
+                        <p>With my in-depth knowledge of local culture, history, and secret spots, I offer personalized guiding services at affordable rates. Let me make your trip unforgettable!</p>
+                        <ul>
+                            <li>Years of Experience: [Number of years]</li>
+                            <li>Languages: [List of languages you speak]</li>
+                            <li>Specialties: [Your areas of expertise, e.g., historical tours, food tours, etc.]</li>
+                        </ul>
+                        <p>Contact: [Your email or phone number]</p>
+                        <a href="#contact" class="guide-cta">Book a Tour with Me</a>
+                    </div>
+                    <div class="guide-image">
+                        <img src="https://via.placeholder.com/200x200.png?text=Tour+Guide" alt="Tour Guide">
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section id="tips">
+            <h2>Travel Tips</h2>
+            <ul>
+                <li>Research your destination before you go</li>
+                <li>Pack light and smart</li>
+                <li>Get travel insurance</li>
+                <li>Learn a few local phrases</li>
+                <li>Be respectful of local customs and traditions</li>
+            </ul>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="4" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
